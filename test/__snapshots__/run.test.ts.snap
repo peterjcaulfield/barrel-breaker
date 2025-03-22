@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`barrelBreaker integration test > transforms import-example.ts correctly 1`] = `
+"import defaultExport from "./modules/index";
+import { named } from "./modules/named-export";
+import { nested } from "./modules/nested/nested-export";
+import { aliasedImport as custom } from "./modules/aliased-import";
+import { aliased as aliasedExport } from "./modules/aliased-export";
+import { button } from "./modules/components/button";
+import { badge } from "./modules/components/badge";
+"
+`;

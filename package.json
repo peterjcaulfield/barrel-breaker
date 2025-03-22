@@ -1,0 +1,26 @@
+{
+  "name": "barrel-breaker",
+  "version": "1.0.0",
+  "description": "Eliminate barrel imports and barrel files",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest test"
+  },
+  "bin": {
+    "barrel-breaker": "./bin/index.js"
+  },
+  "type": "module",
+  "author": "peterjcaulfield",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "diff": "^7.0.0",
+    "ts-morph": "^25.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "fs-extra": "^11.3.0",
+    "vitest": "^3.0.9"
+  }
+}
