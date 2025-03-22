@@ -1,0 +1,51 @@
+name: CI Main Branch Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'npm' # Caches dependencies for faster installs
+
+    - name: Install dependencies (only for package/)
+      run: npm ci --install-links
+      env:
+        NODE_ENV: development
+
+    - name: Run Tests
+      run: npm test
+
+    - name: Publish Package
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        echo "Checking package versions..."
+        
+        PACKAGE_NAME=$(node -p "require('./package.json').name")
+        LATEST_VERSION=$(npm show $PACKAGE_NAME version || echo "0.0.0") # Default to 0.0.0 if package doesn't exist
+        CURRENT_VERSION=$(node -p "require('./package.json').version")
+
+        echo "Latest published version: ${LATEST_VERSION}"
+        echo "Current package version: ${CURRENT_VERSION}"
+
+        if [ "${LATEST_VERSION}" == "${CURRENT_VERSION}" ]; then
+          echo "Info: Version $CURRENT_VERSION is already published. Skipping publish."
+          exit 0
+        fi
+
+        echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+
+        echo "Publishing package..."
+        npm publish
