@@ -1,10 +1,4 @@
 #!/usr/bin/env node
-process.on('SIGINT', () => {
-  console.log('=============================================')
-  console.log('\nSIGINT received.');
-  console.log('=============================================')
-  process.exit(0);
-});
 import { Command } from "commander";
 import { runBarrelBreaker } from "../lib/barrelBreaker.js";
 import { purgeBarrels } from "../lib/purge.js";
