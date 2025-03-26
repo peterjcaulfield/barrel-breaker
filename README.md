@@ -29,6 +29,7 @@ extremely painful to do by hand. That's where barrel breaker comes in.
 ## Features
 
 - **Named and Default Export Handling:** Will tackle both named and default exports.
+- **Type Only Import Handling:** Type-only imports (`import { type MyType...}`) will be translated correctly.
 - **Alias & Re-Export Handling:** Supports import aliasing and re-export aliasing so that renamed symbols are handled correctly.
 - **Recursive Resolution:** Detects and resolves nested barrel files (using `export * from ...`).
 - **Support for Typescript Path Aliases:** Reads your tsconfig.json to honor path aliases.
