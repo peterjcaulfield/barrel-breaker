@@ -18,10 +18,11 @@ After re-writing imports you can use the purge command to automatically remove b
 
 Barrel files are handy for defining short concise import paths but can cause problems once your application grows:
 
-- Slower build times
-- Treeshaking issues
-- Increased risk of circular dependencies
-- Inabilty to optimise test execution based on what changed  due to entagled module dependency graph
+- Slower build times.
+- Slower Code Editor responsiveness when things like Intellisense are enabled.
+- Treeshaking issues.
+- Increased risk of naming collisions and hard to debug circular dependencies.
+- Inabilty to optimise test execution based on what changed due to entagled module dependency graph.
 
 By the time your application grows to the point where you experience these problems refactoring things to be barrel file free can be
 extremely painful to do by hand. That's where barrel breaker comes in.
@@ -29,10 +30,11 @@ extremely painful to do by hand. That's where barrel breaker comes in.
 ## Features
 
 - **Named and Default Export Handling:** Will tackle both named and default exports.
-- **Type Only Import Handling:** Type-only imports (`import { type MyType...}`) will be translated correctly.
 - **Alias & Re-Export Handling:** Supports import aliasing and re-export aliasing so that renamed symbols are handled correctly.
-- **Recursive Resolution:** Detects and resolves nested barrel files (using `export * from ...`).
+- **Type Only Import Handling:** Type-only imports (`import { type MyType...}`) will be translated correctly.
+- **Non Relative Import Handling:** Supports translation of absolute import paths driven by tsconfig.json `baseUrl`.
 - **Support for Typescript Path Aliases:** Reads your tsconfig.json to honor path aliases.
+- **Recursive Resolution:** Detects and resolves nested barrel files (using `export * from ...`).
 - **Dry Run Mode:** Preview changes without modifying files.
 
 
