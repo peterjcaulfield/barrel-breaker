@@ -85,6 +85,7 @@ Run the tool to rewrite barrel imports so they point to the file where the symbo
 - import defaultExport, { named, nested, aliasedImport as custom, aliasedExport, type MyType } from './modules';
 - import { button } from '@components';
 - import { badge } from './modules/components';
+- import { nonRelative } from 'modules';
 + import defaultExport from './modules/index';
 + import { named } from './modules/named-export';
 + import { nested } from './modules/nested/nested-export';
@@ -93,6 +94,7 @@ Run the tool to rewrite barrel imports so they point to the file where the symbo
 + import { type MyType } from './modules/types';
 + import { button } from '@components/button';
 + import { badge } from './modules/components/badge';
++ import { nonRelative } from './modules/non-relative-base-url-export';
 ```
 
 ### Purge Barrel Files

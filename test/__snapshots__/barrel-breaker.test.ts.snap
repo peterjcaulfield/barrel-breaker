@@ -11,5 +11,6 @@ import { aliased as aliasedExport } from "./modules/aliased-export";
 import { type MyType } from "./modules/types";
 import { button } from "@components/button";
 import { badge } from "./modules/components/badge";
+import { nonRelative } from "./modules/non-relative-base-url-export";
 "
 `;
