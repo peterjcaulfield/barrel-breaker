@@ -1,6 +1,6 @@
 {
   "name": "barrel-breaker",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Eliminate barrel imports and barrel files",
   "keywords": [
     "barrel",
