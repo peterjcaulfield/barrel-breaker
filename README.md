@@ -81,8 +81,7 @@ Run the tool to rewrite barrel imports so they point to the file where the symbo
 ```
 
 ```diff
-File changed: import-example.ts
-- import defaultExport, { named, nested, aliasedImport as custom, aliasedExport } from './modules';
+- import defaultExport, { named, nested, aliasedImport as custom, aliasedExport, type MyType } from './modules';
 - import { button } from '@components';
 - import { badge } from './modules/components';
 + import defaultExport from './modules/index';
@@ -90,6 +89,7 @@ File changed: import-example.ts
 + import { nested } from './modules/nested/nested-export';
 + import { aliasedImport as custom } from './modules/aliased-import';
 + import { aliased as aliasedExport } from './modules/aliased-export';
++ import { type MyType } from './modules/types';
 + import { button } from '@components/button';
 + import { badge } from './modules/components/badge';
 ```
