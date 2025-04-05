@@ -29,13 +29,21 @@ extremely painful to do by hand. That's where barrel breaker comes in.
 
 ## Features
 
-- **Named and Default Export Handling:** Will tackle both named and default exports.
-- **Alias & Re-Export Handling:** Supports import aliasing and re-export aliasing so that renamed symbols are handled correctly.
-- **Type Only Import Handling:** Type-only imports (`import { type MyType...}`) will be translated correctly.
-- **Non Relative Import Handling:** Supports translation of absolute import paths driven by tsconfig.json `baseUrl`.
+- **Support for almost every kind of import / export**: (see table below).
 - **Support for Typescript Path Aliases:** Reads your tsconfig.json to honor path aliases.
 - **Recursive Resolution:** Detects and resolves nested barrel files (using `export * from ...`).
 - **Dry Run Mode:** Preview changes without modifying files.
+
+|                         |                                                          | Supported |
+| ----------------------- | -------------------------------------------------------- | --------- |
+| Named Exports           | `import { foo } from './barrel'`                         | ✅        |
+| Default Exports         | `import foo from './barrel'`                             | ✅        |
+| Alias Imports           | `import { foo as bar } from './barrel'`                  | ✅        |
+| Alias Exports           | `export { foo as bar } from './foo'`                     | ✅        |
+| Type Only Imports       | `import { type Foo } from './barrel'`                    | ✅        |
+| Non Relative Imports    | `import { foo } from 'barrel'`                           | ✅        |
+| Typescript Path Aliases | `import { foo } from '@barrel'`                          | ✅        |
+
 
 
 ## Installation
@@ -55,7 +63,6 @@ npm install --save-dev barrel-breaker
 Barrel Breaker can be run via the command line.
 
 ### Rewriting Imports
-
 
 ```
 Usage: brl [options] [command] <path>
