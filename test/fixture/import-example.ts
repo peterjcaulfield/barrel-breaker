@@ -4,3 +4,7 @@ import { badge } from './modules/components';
 import { badge as nonBarrelImport } from './modules/components/badge';
 import { type MyType as MySecondType } from './modules/types';
 import { nonRelative } from 'modules';
+import { type ColorName } from 'chalk';
+import { readFileSync } from 'node:fs';
+import { Trans } from './modules/components';
+import { Trans as Trans2 } from '@components';

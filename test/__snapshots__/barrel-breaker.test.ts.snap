@@ -3,6 +3,8 @@
 exports[`barrelBreaker integration test > transforms import-example.ts correctly 1`] = `
 "import { badge as nonBarrelImport } from './modules/components/badge';
 import { type MyType as MySecondType } from './modules/types';
+import { type ColorName } from 'chalk';
+import { readFileSync } from 'node:fs';
 import defaultExport from "./modules/index";
 import { named } from "./modules/named-export";
 import { nested } from "./modules/nested/nested-export";
@@ -12,5 +14,7 @@ import { type MyType } from "./modules/types";
 import { button } from "@components/button";
 import { badge } from "./modules/components/badge";
 import { nonRelative } from "./modules/non-relative-base-url-export";
+import { Trans } from "react-i18next";
+import { Trans as Trans2 } from "react-i18next";
 "
 `;
