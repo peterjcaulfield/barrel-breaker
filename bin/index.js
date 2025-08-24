@@ -1,10 +1,15 @@
 #!/usr/bin/env node
+import path from 'node:path';
+import process from 'node:process';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import { Command } from "commander";
 import { runBarrelBreaker } from "../lib/barrelBreaker.js";
 import { purgeBarrels } from "../lib/purge.js";
-import path from 'path';
-import process from 'node:process';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf8'));
 
 const program = new Command();
 
@@ -12,6 +17,7 @@ program
   .enablePositionalOptions()
   .name("brl")
   .description("Rewrite barrel imports and purge barrel files.")
+  .version(packageJson.version, '-v, --version')
   .argument("[path]", "file or directory to process")
   .option("--pattern <pattern>", "Only process files that match the pattern")
   .option("--dry-run", "Preview changes without writing")
@@ -42,4 +48,3 @@ program
   });
 
 program.parse(process.argv);
-
